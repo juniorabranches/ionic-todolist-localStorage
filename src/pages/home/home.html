@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Nova Tarefa</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input type="text" placeholder="Digita sua tarefa.." [(ngModel)]="tarefa.tarefa"></ion-input>
+  </ion-item>
+  <div class="content-scroll-flex" style="flex-direction: column">
+    <ion-item>
+      <ion-label>Data</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="tarefa.data"></ion-datetime>
+    </ion-item>
+
+    <ion-list radio-group [(ngModel)]="tarefa.color" style="margin-bottom: 0px;">
+      <ion-list-header style="margin: 0px;">
+        <h2 style="font-weight: bold">Cor</h2>
+      </ion-list-header>
+      <ion-item *ngFor="let color of colors" [style.borderLeft]="'10px solid ' + color[1]">
+        <ion-label>{{color[0]}}</ion-label>
+        <ion-radio checked="{{color[1] == tarefa.color}}" value="{{color[1]}}"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </div>
+  <button ion-button full (click)="salvar()"> Salvar Tarefa</button>
+</ion-content>

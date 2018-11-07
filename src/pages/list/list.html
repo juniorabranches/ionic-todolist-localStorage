@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Minhas Tarefas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list style="width: 100%" class="no-tab-slide">
+    <ion-list-header>Tarefas em Aberto: {{qtdTarefas}}</ion-list-header>
+    <ion-item-sliding #itemSelect *ngFor="let item of listaTarefas; let i = index" [style.borderLeft]="'10px solid' + item.color">
+      <ion-item>
+        {{item.tarefa}}
+        <p>{{item.data | date: 'dd/MM/yyyy'}}</p>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button (click)="finalizar(i, item, itemSelect)">
+          <ion-icon name="archive"></ion-icon>
+          Concluir
+        </button>
+
+        <button ion-button color="danger" (click)="apagar(i, itemSelect)">
+          <ion-icon name="trash"></ion-icon>
+          Apagar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-list  style="width: 100%" class="no-tab-slide">
+    <ion-list-header>Tarefas Concluidas: {{qtdConcluidas}}</ion-list-header>
+    <ion-item *ngFor="let item of listaConcluidas; let i = index" [style.borderLeft]="'10px solid' + item.color">
+      <ion-item style="text-decoration: line-through; background-color: rgb(236, 233, 233)">
+        {{item.tarefa}}
+        <p>{{item.data | date: 'dd/MM/yyyy'}}</p>
+      </ion-item>
+    </ion-item>
+  </ion-list>
+</ion-content>
