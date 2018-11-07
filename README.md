@@ -2,4 +2,6 @@
 
 ## Telas / Screens: 
 
-![View this](assets/1.png)![View this](assets/2.png)![View this](assets/3.png)
+![View this](src/assets/1.png)
+![View this](src/assets/2.png)
+![View this](src/assets/3.png)
